@@ -4,10 +4,11 @@ import "./App.css";
 import { Button, Card, Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import AddTeamDialog from "./components/AddTeamDialog";
-import { Next } from "react-bootstrap/lib/Pagination";
+import AddMatchDialog from "./components/AddMatchDialog";
 
 function App() {
   const [showTeamNoteDialog, setshowTeamNoteDialog] = useState(false);
+  const [showMatchResultDialog, setshowMatchResultDialog] = useState(false);
 
   return (
     <Container className="App">
@@ -47,7 +48,13 @@ function App() {
               <Card.Text>Capture matches</Card.Text>
             </Card.Body>
           </Card.Header>
-          <Button>Capture Results</Button>
+          <Button
+            onClick={() => {
+              setshowMatchResultDialog(true);
+            }}
+          >
+            Capture Results
+          </Button>
         </Card>
       </Row>
       <Row>
@@ -59,6 +66,14 @@ function App() {
             setshowTeamNoteDialog(false);
           }}
           onDismiss={() => setshowTeamNoteDialog(false)}
+        />
+      )}
+      {showMatchResultDialog && (
+        <AddMatchDialog
+          onMatchSaved={() => {
+            setshowMatchResultDialog(false);
+          }}
+          onDismiss={() => setshowMatchResultDialog(false)}
         />
       )}
     </Container>

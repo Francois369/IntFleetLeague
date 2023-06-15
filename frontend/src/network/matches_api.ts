@@ -1,4 +1,4 @@
-import { Team } from "../model/team";
+import { Match } from "../model/match";
 
 async function fetchData(input: RequestInfo, init: RequestInit) {
   const response = await fetch(input, init);
@@ -11,19 +11,22 @@ async function fetchData(input: RequestInfo, init: RequestInit) {
   }
 }
 
-export async function fetchteams(): Promise<Team[]> {
-  const response = await fetchData("/teams", {
-    method: "GET",
-  });
-  return response.json();
+// export async function fetchteams(): Promise<Match[]> {
+//   const response = await fetchData("/matches", {
+//     method: "GET",
+//   });
+//   return response.json();
+// }
+
+export interface MatchImport {
+  teamname1: String;
+  teamname2: String;
+  team1Goals: Number;
+  team2Goals: Number;
 }
 
-export interface TeamImport {
-  teamname?: String;
-}
-
-export async function createTeam(team: TeamImport): Promise<Team> {
-  const response = await fetchData("/api/teams", {
+export async function createMatch(team: MatchImport): Promise<Match> {
+  const response = await fetchData("/matches", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

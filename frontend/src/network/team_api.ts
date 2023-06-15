@@ -23,7 +23,7 @@ export interface TeamImport {
 }
 
 export async function createTeam(team: TeamImport): Promise<Team> {
-  const response = await fetchData("/api/teams", {
+  const response = await fetchData("/teams", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
