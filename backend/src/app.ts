@@ -1,13 +1,14 @@
 import "dotenv/config";
 import express, { Request, Response, NextFunction } from "express";
+import matchRoutes from "./routes/matches";
 import teamsRoutes from "./routes/teams";
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/api/teams", teamsRoutes);
-
+app.use("/matches", matchRoutes);
+app.use("/teams", teamsRoutes);
 app.use((req, res, next) => {
   next(Error("RouteNot Found"));
 });

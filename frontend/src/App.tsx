@@ -1,9 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "./logo.svg";
+import LeagueTable from "./components/LeagueTable";
 import "./App.css";
 import { Button, Card, Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import AddTeamDialog from "./components/AddTeamDialog";
+import { Next } from "react-bootstrap/lib/Pagination";
+
 function App() {
   const [showTeamNoteDialog, setshowTeamNoteDialog] = useState(false);
 
@@ -42,26 +44,22 @@ function App() {
           <Card.Header>
             <Card.Title>Step: 3.1</Card.Title>
             <Card.Body style={{ height: 200 }}>
-              <Card.Text>Start Capturing Match Results</Card.Text>
+              <Card.Text>Capture matches</Card.Text>
             </Card.Body>
           </Card.Header>
           <Button>Capture Results</Button>
         </Card>
-
-        <Card style={{ width: "200px" }}>
-          <Card.Header>
-            <Card.Title>Step: 3.2</Card.Title>
-            <Card.Body style={{ height: 200 }}>
-              <Card.Text>
-                Keep an eye on your teams progress as the season goes
-              </Card.Text>
-            </Card.Body>
-          </Card.Header>
-          <Button>View Table</Button>
-        </Card>
+      </Row>
+      <Row>
+        <LeagueTable />
       </Row>
       {showTeamNoteDialog && (
-        <AddTeamDialog onDismiss={() => setshowTeamNoteDialog(false)} />
+        <AddTeamDialog
+          onTeamSaved={() => {
+            setshowTeamNoteDialog(false);
+          }}
+          onDismiss={() => setshowTeamNoteDialog(false)}
+        />
       )}
     </Container>
   );
