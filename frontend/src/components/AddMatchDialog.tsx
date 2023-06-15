@@ -5,7 +5,7 @@ import { MatchImport, createMatch } from "../network/matches_api";
 import * as MatchApi from "../network/matches_api";
 import { Match } from "../model/match";
 import { Team } from "../model/team";
-import TeamInput from "./ui/teaminput";
+
 import { fetchteams } from "../network/team_api";
 
 interface AddMatchResultDialogProps {

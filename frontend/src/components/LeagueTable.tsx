@@ -1,4 +1,5 @@
 import { useEffect, Fragment, useState } from "react";
+import Table from "react-bootstrap/Table";
 import * as TeamApi from "../network/team_api";
 import { Team } from "../model/team";
 import { fetchteams } from "../network/team_api";
@@ -24,7 +25,32 @@ const LeagueTable = () => {
     return (
       <Fragment>
         <button onClick={clickHandler}> Refresh League Table </button>
-        <p>{JSON.stringify(teams)}</p>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Team Name</th>
+              <th>Points</th>
+              <th>Games Won</th>
+              <th>Games Lost</th>
+              <th>Games Drawn</th>
+              <th>Goal Difrence</th>
+              <th>Goals for</th>
+            </tr>
+          </thead>
+          <tbody>
+            {teams.map((item: Team) => (
+              <tr key={item.teamname}>
+                <td>{item.teamname}</td>
+                <td>{`${item.points}`}</td>
+                <td>{`${item.matchesWon}`}</td>
+                <td>{`${item.matchesLost}`}</td>
+                <td>{`${item.matchesDrawn}`}</td>
+                <td>{`${item.goalsDiff}`}</td>
+                <td>{`${item.goalsFor}`}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </Fragment>
     );
   } else {
