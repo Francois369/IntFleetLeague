@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import * as TeamApi from "../network/team_api";
 import { Team } from "../model/team";
 import { fetchteams } from "../network/team_api";
+import { Button, Card, Container, Row } from "react-bootstrap";
 
 const LeagueTable = () => {
   const [teams, setTeams] = useState<Team[]>([]);
@@ -30,7 +31,9 @@ const LeagueTable = () => {
     display.reverse();
     return (
       <Fragment>
-        <button onClick={clickHandler}> Refresh League Table </button>
+        <Button variant="warning" onClick={clickHandler}>
+          Refresh League Table
+        </Button>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -60,7 +63,11 @@ const LeagueTable = () => {
       </Fragment>
     );
   } else {
-    return <button onClick={clickHandler}> Refresh League Table </button>;
+    return (
+      <Button variant="warning" onClick={clickHandler}>
+        Refresh League Table{" "}
+      </Button>
+    );
   }
 };
 

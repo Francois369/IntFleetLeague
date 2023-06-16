@@ -1,6 +1,22 @@
 import { RequestHandler, NextFunction } from "express";
 import TeamModel from "../models/team";
+import MatchModel from "../models/match";
 import createHttpError, { UnknownError } from "http-errors";
+import { model } from "mongoose";
+
+export const restartLeeague: RequestHandler = async (
+  req,
+  res,
+  next: NextFunction
+) => {
+  try {
+    await TeamModel.deleteMany({});
+    await MatchModel.deleteMany({});
+    res.status(201).json({});
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const getTeams: RequestHandler = async (
   req,

@@ -18,6 +18,13 @@ export async function fetchteams(): Promise<Team[]> {
   return response.json();
 }
 
+export async function restartLeague(): Promise<Team[]> {
+  const response = await fetchData("/teams", {
+    method: "DELETE",
+  });
+  return response.json();
+}
+
 export interface TeamImport {
   teamname?: String;
 }
