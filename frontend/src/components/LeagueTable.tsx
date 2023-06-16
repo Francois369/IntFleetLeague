@@ -22,6 +22,12 @@ const LeagueTable = () => {
   }
 
   if (teams.length > 1) {
+    var display: Team[] = teams;
+    display.sort();
+    display.sort(function (a, b) {
+      return +a.points - +b.points;
+    });
+    display.reverse();
     return (
       <Fragment>
         <button onClick={clickHandler}> Refresh League Table </button>
@@ -38,7 +44,7 @@ const LeagueTable = () => {
             </tr>
           </thead>
           <tbody>
-            {teams.map((item: Team) => (
+            {display.map((item: Team) => (
               <tr key={item.teamname}>
                 <td>{item.teamname}</td>
                 <td>{`${item.points}`}</td>

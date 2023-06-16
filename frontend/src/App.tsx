@@ -33,18 +33,6 @@ function App() {
           <Card.Header>
             <Card.Title>Step: 2</Card.Title>
             <Card.Body style={{ height: 200 }}>
-              <Card.Text>
-                Once all the teams are added Schedule the matches
-              </Card.Text>
-            </Card.Body>
-          </Card.Header>
-          <Button>Schedule Matches</Button>
-        </Card>
-
-        <Card style={{ width: "200px" }}>
-          <Card.Header>
-            <Card.Title>Step: 3.1</Card.Title>
-            <Card.Body style={{ height: 200 }}>
               <Card.Text>Capture matches</Card.Text>
             </Card.Body>
           </Card.Header>
